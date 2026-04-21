@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="site-header">
+  <a class="brand" href="{{ config.base_url }}">Nao Robot Soccer Dataset</a>
+  <nav aria-label="Main navigation">
+    <a href="#dataset">Contents</a>
+    <a href="#conditions">Evaluation</a>
+    <a href="#segmentation">Labels</a>
+    <a href="#access">Access</a>
+    <a href="#paper">Paper</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">RoboCup Open Platforms &amp; Tools</p>
+      <h1>Robot soccer vision data from real competition environments</h1>
+      <p class="lead">A large image dataset for developing and evaluating vision systems on Nao V6 humanoid robots. The dataset combines nearly two million camera images with manual situation categories and a representative subset of pixel-wise segmentation masks.</p>
+      <div class="actions">
+        <a class="button primary" href="{{ config.extra.dataset_url }}">Download dataset</a>
+        <a class="button secondary" href="#segmentation">View examples</a>
+      </div>
+    </div>
+    <div class="hero-gallery" aria-label="Dataset image examples">
+      <img src="{{ get_url(path='images/00189_RGB.png') }}" alt="Robot soccer image with green field and goal area">
+      <img src="{{ get_url(path='images/00211_RGB.png') }}" alt="Robot soccer image with robots and field line">
+      <img src="{{ get_url(path='images/00253_RGB.png') }}" alt="Robot soccer image with robots on the field">
+      <img src="{{ get_url(path='images/00268_RGB.png') }}" alt="Robot soccer image with dark field area">
+      <img src="{{ get_url(path='images/00276_RGB.png') }}" alt="Robot soccer image with close field markings">
+      <img src="{{ get_url(path='images/00298_RGB.png') }}" alt="Robot soccer image with ball on the field">
+      <img src="{{ get_url(path='images/00326_RGB.png') }}" alt="Robot soccer image from a competition scene">
+      <img src="{{ get_url(path='images/00341_RGB.png') }}" alt="Robot soccer image with strong shadows">
+      <img src="{{ get_url(path='images/00558_RGB.png') }}" alt="Robot soccer image with ball and robots">
+    </div>
+  </section>
+
+  <section id="dataset" class="stats-section">
+    <div class="section-heading">
+      <p class="eyebrow">What is included</p>
+      <h2>Images, labels, and condition metadata</h2>
+      <p>The dataset is intended for teams and researchers who need realistic robot soccer imagery rather than curated lab scenes. It covers multiple RoboCup-related events, several contributing teams, top and bottom camera streams, and environmental metadata for each game.</p>
+    </div>
+    <div class="stats-grid">
+      <article>
+        <strong>1,864,394</strong>
+        <span>camera images from Nao V6 robots</span>
+      </article>
+      <article>
+        <strong>166</strong>
+        <span>game recordings from 2019 to 2025</span>
+      </article>
+      <article>
+        <strong>601</strong>
+        <span>segmentation masks sampled across conditions</span>
+      </article>
+      <article>
+        <strong>4</strong>
+        <span>condition groups for targeted evaluation</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="conditions" class="split-section">
+    <div class="condition-copy">
+      <p class="eyebrow">Condition-aware evaluation</p>
+      <h2>Evaluate models on the situations that usually break them</h2>
+      <p>Robot soccer vision has to work across venues, light sources, surface quality, shadows, reflections, and field markings. Manual categorization turns these factors into usable metadata, so models can be trained on selected conditions and evaluated on controlled subsets instead of only on random image splits.</p>
+    </div>
+    <figure class="distribution-card">
+      <img src="{{ get_url(path='images/full_and_labeled_dataset_distribution.png') }}" alt="Distribution of full and labeled dataset over environmental conditions">
+      <div class="distribution-legend" aria-label="Condition legend">
+        <div class="legend-group">
+          <strong>Light source</strong>
+          <span><i style="--legend-color: rgb(255, 81, 81)"></i>Sun Light</span>
+          <span><i style="--legend-color: rgb(166, 40, 41)"></i>Artificial Light</span>
+          <span><i style="--legend-color: rgb(86, 0, 0)"></i>Mixed</span>
+        </div>
+        <div class="legend-group">
+          <strong>Shadows and reflections</strong>
+          <span><i style="--legend-color: rgb(140, 97, 255)"></i>None</span>
+          <span><i style="--legend-color: rgb(91, 63, 191)"></i>Light Reflections</span>
+          <span><i style="--legend-color: rgb(46, 32, 131)"></i>Shadows</span>
+          <span><i style="--legend-color: rgb(1, 0, 75)"></i>Both</span>
+        </div>
+        <div class="legend-group">
+          <strong>Line conditions</strong>
+          <span><i style="--legend-color: rgb(95, 255, 92)"></i>Taped</span>
+          <span><i style="--legend-color: rgb(64, 164, 42)"></i>Spray-painted (fair)</span>
+          <span><i style="--legend-color: rgb(27, 82, 0)"></i>Spray-painted (poor)</span>
+        </div>
+        <div class="legend-group">
+          <strong>Field color</strong>
+          <span><i style="--legend-color: rgb(255, 184, 0)"></i>Inconsistent Field Color</span>
+          <span><i style="--legend-color: rgb(196, 104, 0)"></i>Consistent Field Color</span>
+        </div>
+      </div>
+      <figcaption>Condition distribution for the full dataset and for the segmentation-labeled subset. The labeled subset was selected to reflect the broader distribution while keeping manual annotation effort feasible.</figcaption>
+    </figure>
+  </section>
+
+  <section id="segmentation" class="examples-section">
+    <div class="section-heading centered">
+      <p class="eyebrow">Segmentation labels</p>
+      <h2>Pixel-wise masks for semantic scene understanding</h2>
+      <p>The labeled subset contains masks for the visual elements most relevant to robot soccer: field, field lines, ball, robots, goal, other image regions, and uncertain pixels. Boundary areas and visually ambiguous regions are marked as uncertain instead of forcing unreliable class decisions.</p>
+    </div>
+    <div class="mask-grid">
+      <figure>
+        <img src="{{ get_url(path='images/00096_RGB.png') }}" alt="Robot soccer camera image">
+        <img src="{{ get_url(path='images/00096.png') }}" alt="Segmentation mask for robot soccer camera image">
+      </figure>
+      <figure>
+        <img src="{{ get_url(path='images/00136_RGB.png') }}" alt="Robot soccer camera image with field line">
+        <img src="{{ get_url(path='images/00136.png') }}" alt="Segmentation mask for field line example">
+      </figure>
+      <figure>
+        <img src="{{ get_url(path='images/00211_RGB.png') }}" alt="Robot soccer camera image with robots">
+        <img src="{{ get_url(path='images/00211.png') }}" alt="Segmentation mask for robot example">
+      </figure>
+      <figure>
+        <img src="{{ get_url(path='images/00257_RGB.png') }}" alt="Robot soccer camera image with shadowed field">
+        <img src="{{ get_url(path='images/00257.png') }}" alt="Segmentation mask for shadowed field example">
+      </figure>
+      <figure>
+        <img src="{{ get_url(path='images/00268_RGB.png') }}" alt="Robot soccer camera image with low light">
+        <img src="{{ get_url(path='images/00268.png') }}" alt="Segmentation mask for low-light example">
+      </figure>
+      <figure>
+        <img src="{{ get_url(path='images/00298_RGB.png') }}" alt="Robot soccer camera image with ball">
+        <img src="{{ get_url(path='images/00298.png') }}" alt="Segmentation mask for ball example">
+      </figure>
+    </div>
+    <div class="label-row legend-bordered" aria-label="Segmentation classes">
+      <span class="field">Field</span>
+      <span class="line">Line</span>
+      <span class="ball">Ball</span>
+      <span class="goal">Goal</span>
+      <span class="robot">Robot</span>
+      <span class="other">Others</span>
+      <span class="uncertain">Uncertain</span>
+    </div>
+  </section>
+
+  <section id="access" class="download-section">
+    <div>
+      <p class="eyebrow">Access and use</p>
+      <h2>Download and start filtering by scenario</h2>
+      <p>The archive is organized by game, robot, and camera. Metadata describes the recording context, image format, and manually assigned environmental conditions, enabling users to create training, validation, and test splits for the scenarios they care about.</p>
+    </div>
+    <a class="button primary" href="{{ config.extra.dataset_url }}">Open dataset download</a>
+  </section>
+
+  <section class="paper-section acknowledgments-section">
+    <div class="section-heading">
+      <p class="eyebrow">Acknowledgments</p>
+      <h2>Built from shared RoboCup data</h2>
+      <p>This dataset was made possible by contributions from multiple RoboCup teams. We thank <strong>B-Human</strong>, <strong>SPQR</strong>, <strong>Nao Devils</strong>, <strong>BerlinUnited</strong>, and the <strong>Dutch Nao Team</strong> for providing images that helped broaden the dataset beyond a single team or venue.</p>
+    </div>
+  </section>
+
+  <section id="paper" class="paper-section">
+    <div class="section-heading">
+      <p class="eyebrow">RoboCup Symposium 2026</p>
+      <h2>Paper and citation</h2>
+      <p>The accompanying extended abstract describes the dataset, its manual condition categories, the representative segmentation subset, and intended applications for RoboCup and robot soccer vision research.</p>
+    </div>
+    <pre><code>@misc{goettsch2026naodataset,
+  title  = {A Large Image Dataset for Robot Soccer in Diverse Competition Environments},
+  author = {G\"ottsch, Franziska-Sophie and Schmidt, Maximilian},
+  year   = {2026},
+  note   = {RoboCup International Symposium Open Platforms and Tools submission}
+}</code></pre>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>HULKs e.V., RoboCup HSL Team Hamburg</span>
+  <div class="footer-links">
+    <a href="https://hulks.de">hulks.de</a>
+    <a href="https://hulks.de/imprint/">Imprint</a>
+    <a href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a>
+  </div>
+</footer>
+{% endblock content %}

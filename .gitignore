@@ -1,0 +1,43 @@
+# Compiled files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# Editor backups and temporary files
+*~
+*.backup
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# Generated PDFs
+*.pdf
+
+# Logs
+*.log
+*.fls
+*.fdb_latexmk
+
+# Build directories
+_build/
+auxiliary/
+output/
+_texbuild/
+public/
+.superpowers/
+
+.harper-dictionary.txt
+paper/figures/sampled_images

@@ -1,0 +1,12 @@
+base_url = "https://hulks.de/nao-image-segmentation-dataset/"
+title = "Nao Robot Soccer Image Segmentation Dataset"
+description = "A large RoboCup robot soccer image dataset with manual condition categories and representative segmentation masks."
+compile_sass = true
+build_search_index = false
+generate_feeds = false
+minify_html = true
+
+[extra]
+dataset_url = "https://nextcloud.hulks.dev/s/RfEkfeKTk6H6aJX"
+repository_url = "https://github.com/HULKs/nao-image-segmentation-dataset"
+contact_email = "hulks@tuhh.de"
