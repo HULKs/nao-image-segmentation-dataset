@@ -314,6 +314,15 @@ h2 { font-size: clamp(1.65rem, 2vw, 2.55rem); }
 .download-section div { max-width: 680px; }
 .download-section p:not(.eyebrow) { color: var(--muted); }
 
+.license-note {
+  margin-bottom: 0;
+}
+
+.license-note a {
+  color: var(--text);
+  font-weight: 800;
+}
+
 .paper-section { padding: 28px; }
 
 pre {
