@@ -10,12 +10,19 @@
 % \usepackage{pgfplotstable}
 \usepackage{xcolor}
 
+\setlength{\textfloatsep}{8pt plus 1pt minus 2pt}
+\setlength{\floatsep}{6pt plus 1pt minus 2pt}
+\setlength{\intextsep}{12pt plus 1pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{0pt}
+
 \newacronym{spl}{SPL}{Standard Platform League}
 \newacronym{hsl}{HSL}{Humanoid Soccer League}
 \newacronym{ml}{ML}{Machine Learning}
 \newacronym{cv}{CV}{Computer Vision}
 \newacronym{cvat}{CVAT}{Computer Vision Annotation Tool}
 \newacronym{sam}{SAM}{Segment Anything Model}
+\glsdisablehyper
 
 % \pgfplotsset{compat=1.18}
 
@@ -58,7 +65,7 @@
 Data-driven methods require large amounts of diverse, high-quality, and domain-specific data with accurate annotations.
 Creating such datasets is time-consuming and costly in both collection and annotation.
 
-In the RoboCup \gls{hsl} and former \gls{spl}, computer vision is essential for object detection, obstacle avoidance, and self-localization in autonomous soccer matches.
+In the RoboCup \gls{hsl} and former \gls{spl}, computer vision is essential for object detection, obstacle avoidance, and self-localization in autonomous soccer matches~\cite{qianAdaptiveFieldDetection2017}.
 The long-term goal of playing against human players by 2050 introduces increasingly challenging field conditions, including varying lighting, inconsistent artificial turf, shadows, reflections, and faded field markings.
 These challenges highlight the need for datasets that provide not only images and labels, but also descriptions of the situations of recording conditions.
 
@@ -68,8 +75,9 @@ The contribution is twofold: first, the dataset provides nearly two million imag
 \section{Dataset}
 
 The dataset contains 1,864,394 images captured by Nao V6 robots across teams and events.
+It is archived in TORE, the TUHH research data repository, and released under the CC BY 4.0 license~\cite{goettsch2026dataset}.
 Of these images, 601 are manually annotated with segmentation masks as described in~\Cref{subsec:annotations}.
-Approximately 44\% of the images originate from our own team \textit{HULKs}; the remainder was collected from other competing teams: \textit{B-Human}, \textit{SPQR}, \textit{Nao Devils}, \textit{BerlinUnited}, and \textit{Dutch Nao Team}.
+Approximately 44\% of the images originate from our own team \textit{HULKs}; the remainder was collected from \textit{B-Human}, \textit{SPQR}, \textit{Nao Devils}, \textit{BerlinUnited}, and \textit{Dutch Nao Team}.
 For each game, metadata provides the image format and manually assigned environmental conditions.
 
 % B-Human: 984,822
@@ -106,7 +114,7 @@ For each game, metadata provides the image format and manually assigned environm
 	\tikz[baseline=-0.6ex]\draw[fill={rgb,255:red,255; green,184; blue,0}, draw=none, yshift=-0.2em] (0,0) rectangle (4pt, 4pt); Inconsistent Field Color\;
 	\tikz[baseline=-0.6ex]\draw[fill={rgb,255:red,196; green,104; blue,0}, draw=none, yshift=-0.2em] (0,0) rectangle (4pt, 4pt); Consistent Field Color
 	}
-	\caption{Distribution over the light source (red shades), reflection/shadow (purple shades), line (green shades), and field (orange shades) conditions. The top plot corresponds to the full dataset, while the second plot describes the labeled subset.}\label{fig:dataDistribution}
+	\caption{Distribution over the light source (red shades), reflection/shadow (purple shades), line (green shades), and field (orange shades) conditions. The top plot corresponds to the full dataset, while the bottom plot describes the labeled subset.}\label{fig:dataDistribution}
 \end{figure}
 
 \subsection{Overview}
@@ -156,15 +164,15 @@ We distinguish the following categories:
 	\item \textbf{Field Conditions}: Inconsistent field color, Consistent field color
 \end{itemize}
 
-The distribution of the environmental conditions in the full dataset and the labeled subset is shown in \Cref{fig:dataDistribution}.
-Although only 601 images include segmentation masks, this subset was selected to reflect the broader condition distribution, making the labels useful for representative supervised experiments and condition-specific evaluations.
+\Cref{fig:dataDistribution} compares the full dataset and labeled subset of 601 images across these four condition groups.
+Because pixel-wise annotation is costly, the labeled subset was sampled to reflect the broader condition distribution, making it suitable for representative supervised experiments and condition-specific evaluations.
 Additionally, \Cref{fig:examplesDataset} shows several example images from the dataset.
 
 \subsection{Image Segmentation Masks}\label{subsec:annotations}
 
 The dataset includes 601 manually labeled images with segmentation masks (see \Cref{fig:examplesSegmentation}) for six semantic classes: \textit{field}, \textit{lines}, \textit{ball}, \textit{robots}, \textit{goal}, and \textit{others} (e.g., background or humans), plus an \textit{uncertain} label.
 The pixels in the uncertain class include the boundary regions between the other classes, as well as areas that humans cannot clearly distinguish.
-The annotation process was aided with the \gls{cvat} and \gls{sam}.
+The annotation process was aided with \gls{cvat} and \gls{sam}.
 
 \begin{figure}
 	\centering
@@ -335,14 +343,13 @@ The annotation process was aided with the \gls{cvat} and \gls{sam}.
 \section{Applications and Use Cases}
 
 The dataset supports a range of applications in robotic vision.
-The annotated subset can train and evaluate segmentation models, while the large pool of unlabeled images enables custom annotation strategies and semi- or self-supervised learning.
+The annotated subset can train and evaluate segmentation models, while the large pool of unlabeled images enables custom annotation strategies and semi- or self-supervised learning~\cite{goettsch2026lightweight}.
 With nearly 2 million images, the dataset provides sufficient scale for training robust models.
 It is grounded in the RoboCup domain with Nao V6 robots, but many aspects generalize to other robot soccer settings and related tasks.
 
 A key advantage is the combination of environmental diversity and manual situation labels.
 Because each game is categorized by lighting, shadows/reflections, line conditions, and field conditions, researchers can train models for specific scenarios, compare performance across environmental factors, and construct benchmark splits isolating known failure cases.
 These evaluations are difficult to perform from raw images and segmentation masks alone.
-Overall, the dataset is a flexible resource for developing and testing vision methods under realistic conditions.
 
 \section{Conclusion}
 
@@ -352,5 +359,8 @@ Future work includes expanding the dataset with additional annotations (e.g., bo
 \section*{Acknowledgment}
 
 Many thanks to the teams \textit{B-Human}, \textit{SPQR}, \textit{Nao Devils}, \textit{BerlinUnited}, and \textit{Dutch Nao Team}, who helped us create this extensive dataset.
+
+\bibliographystyle{splncs04}
+\bibliography{literature}
 
 \end{document}
