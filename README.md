@@ -45,10 +45,19 @@ latexmk paper.tex
 ## Citation
 
 ```bibtex
-@misc{goettsch2026naodataset,
-  title  = {A Large Image Dataset for Robot Soccer in Diverse Competition Environments},
-  author = {G\"ottsch, Franziska-Sophie and Schmidt, Maximilian},
-  year   = {2026},
-  note   = {RoboCup International Symposium Open Platforms and Tools submission}
+@misc{goettsch2026dataset,
+  author = {G{\"o}ttsch, Franziska-Sophie and Schmidt, Maximilian},
+  title = {A Large Image Dataset for Robot Soccer in Diverse Competition Environments},
+  year = {2026},
+  doi = {10.15480/882.17279},
+  note = {Dataset archived in TORE, TUHH research data repository}
+}
+
+@inproceedings{goettsch2026large_image_dataset_paper,
+  author = {G{\"o}ttsch, Franziska-Sophie and Schmidt, Maximilian},
+  title = {A Large Image Dataset for Robot Soccer in Diverse Competition Environments},
+  booktitle = {RoboCup 2026: Robot World Cup XXIX},
+  year = {2026},
+  note = {RoboCup International Symposium, Open Platforms and Tools Track, accepted}
 }
 ```
