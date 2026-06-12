@@ -1,0 +1,93 @@
+SUBMISSION: 49
+TITLE: A Large Image Dataset for Robot Soccer in Diverse Competition Environments
+
+----------------------- Summary ----------------------
+
+Evaluation/Analysis
+- Add evaluation or baseline experiments demonstrating the datasets effectiveness
+- More detailed analysis, e.g., reporting class distribution and number of instances per class
+- Expand annotations or discussing annotation strategies
+- Discuss limitations (domain bias, annotation noise)
+- Discuss potential applications beyond RocuCup
+
+Related Work
+- Compare with existing robot soccer or robotic datasets
+
+Usage of Dataset
+- the paper does not clearly describe the level of documentation (e.g., tutorials, examples, or data loading tools)
+- While the dataset appears to be publicly available, details about licensing, versioning, and long-term maintenance are not clearly described
+
+Others
+- The meaning of the horizontal axis in Figure 1 is not clearly explained, and multiple types of environmental categories appear to be combined into a single axis. This makes the figure difficult to interpret.
+- Figure 1 appears before the environmental condition categories are fully explained. Since understanding the figure depends on these categories, moving it to a later point in the paper would improve readability.
+
+???
+- This dataset includes less commonly used categories at the moment of the RoboCup, such as ball type and the exclusive use of NAO robots as a robot category, which have since been replaced by more diverse robotic platforms. The applicability for class such as robots and ball is very limited to the actual scenario of RoboCup.
+
+----------------------- REVIEW 1 ---------------------
+
+SUBMISSION: 49
+TITLE: A Large Image Dataset for Robot Soccer in Diverse Competition Environments
+
+----------- Overall evaluation -----------
+SCORE: 1 (weak accept)
+----- TEXT:
+This paper presents a large-scale image dataset for robot soccer, collected from Nao V6 humanoid robots across multiple RoboCup competitions and environments. The dataset is notable for its scale (over 1.8 million images) and diversity, covering variations in lighting, shadows, reflections, field conditions, and line quality . A key strength is the inclusion of manually assigned environmental condition labels, which enable targeted evaluation and training under specific real-world scenarios. Additionally, a subset of 601 images is annotated with pixel-wise semantic segmentation masks for six classes, providing a useful benchmark for supervised learning tasks .
+The paper is clearly structured and highlights the practical relevance of the dataset for robotic vision, particularly in RoboCup settings. The combination of large-scale unlabeled data and a representative labeled subset supports both supervised and semi-supervised approaches. However, the paper is primarily descriptive and lacks quantitative evaluation or baseline experiments demonstrating the dataset’s effectiveness. While the dataset’s design is well-motivated, more empirical validation would strengthen its contribution. Overall, this work provides a valuable resource for the community, though its impact would benefit from deeper experimental analysis.
+The paper could be improved by including baseline experiments (e.g., segmentation or detection models) to demonstrate the dataset’s practical utility and benchmarking potential. More detailed analysis of dataset diversity and class distribution would also enhance clarity. The labeled subset is relatively small compared to the full dataset; expanding annotations or discussing annotation strategies would strengthen usability. Additionally, comparisons with existing robot soccer or robotic vision datasets would better position the contribution. Finally, clearer discussion of limitations (e.g., domain bias, annotation noise) and potential applications beyond RoboCup would improve the paper’s completeness.
+
+
+----------------------- REVIEW 2 ---------------------
+
+SUBMISSION: 49
+TITLE: A Large Image Dataset for Robot Soccer in Diverse Competition Environments
+
+----------- Overall evaluation -----------
+SCORE: 2 (accept)
+----- TEXT:
+This paper presents a large-scale image dataset for robot soccer, collected from Nao V6 robots across multiple RoboCup competitions, teams, and environments. The dataset contains approximately 1.86 million images, complemented by a manually annotated subset of 601 images with pixel-wise segmentation masks. In addition, each game is categorized by environmental conditions such as lighting, shadows, reflections, line quality, and field color.
+From the perspective of the Open Platforms and Tools track, this work provides a valuable and practically useful resource for the RoboCup community. The scale and diversity of the dataset are particularly strong aspects. By including data from multiple teams, venues, and years, the dataset captures realistic variability that is essential for developing robust vision systems. Furthermore, the inclusion of manually defined environmental condition labels significantly enhances usability, enabling targeted training and evaluation under specific scenarios.
+In terms of community impact, the dataset is highly relevant, particularly for vision-based tasks in RoboCup leagues such as the Humanoid and Standard Platform Leagues. The dataset is grounded in real competition environments and is likely to be widely useful for training, benchmarking, and evaluating robotic vision methods.
+
+That said, several aspects could be improved to further strengthen the contribution:
+
+・Limited labeled data: While the overall dataset is large, only 601 images are annotated with segmentation masks. Expanding the labeled subset would significantly increase its impact for supervised learning applications.
+・Lack of baseline results: The paper does not provide benchmark results (e.g., segmentation performance using the dataset). Including such baselines would help demonstrate its practical utility.
+・Documentation and usability: Although a website is provided, the paper does not clearly describe the level of documentation (e.g., tutorials, examples, or data loading tools). More explicit information on usability would improve accessibility for users.
+・Openness and maintenance: While the dataset appears to be publicly available, details about licensing, versioning, and long-term maintenance are not clearly described. These aspects are important for community adoption.
+・Lack of references: The paper does not include any references, which makes it difficult to position the dataset with respect to existing work. Even for a dataset paper, citing related datasets and prior work in robot soccer or robotic vision would strengthen the contribution and provide better context.
+・Clarity of Figure 1: The meaning of the horizontal axis in Figure 1 is not clearly explained, and multiple types of environmental categories appear to be combined into a single axis. This makes the figure difficult to interpret.
+・Figure placement: Figure 1 appears before the environmental condition categories are fully explained. Since understanding the figure depends on these categories, moving it to a later point in the paper would improve readability.
+
+
+----------------------- REVIEW 3 ---------------------
+
+SUBMISSION: 49
+TITLE: A Large Image Dataset for Robot Soccer in Diverse Competition Environments
+
+----------- Overall evaluation -----------
+SCORE: 1 (weak accept)
+----- TEXT:
+The paper presents a dataset of approximately 2 million images collected from NAO V6 humanoid robots in RoboCup soccer environments. Specifically, it consists of images recorded during the Standard Platform League (SPL) soccer matches. The dataset can be utilized across the soccer league, particularly for model training and benchmarking field segmentation under various conditions, including diverse lighting and different field line types (e.g., taped or spray-painted lines at various quality levels). The images come from a league that is currently transitioning from the SPL to the Humanoid Soccer League (HSL). 
+
+Weakness: 
+- This dataset includes less commonly used categories at the moment of the RoboCup, such as ball type and the exclusive use of NAO robots as a robot category, which have since been replaced by more diverse robotic platforms. The applicability for class such as robots and ball is very limited to the actual scenario of RoboCup.
+
+- The count of instances per class is missing; knowing how many instances exist for each class is essential for evaluating class balance, understand where the dataset may produce biased models, and evaluate its applicability for specific classes. This is critical for classes unrelated to the robots or the ball, especially given the fact the HSL now have diverse robotic platforms (rather than just the NAO) and a standard FIFA ball. Add number of each class in addition to the total of all images.
+
+Strenghts:
+- The field segmentation component (involving images of lines, field, human and background) generalizes well beyond a single league: the manual annotation of images across varied lighting conditions and all the soccer robotics league can benefit from this for field detection tasks.
+
+- The dataset is well-documented and accessible on a website via the team's cloud infrastructure; however, an explicit breakdown of the classes should be added to this documentation
+
+
+----------------------- REVIEW 4 ---------------------
+
+SUBMISSION: 49
+TITLE: A Large Image Dataset for Robot Soccer in Diverse Competition Environments
+
+----------- Overall evaluation -----------
+SCORE: 2 (accept)
+----- TEXT:
+Meta-review: Reviewers universally praised the massive scale and environmental diversity of the dataset, noting its high practical value as a resource for the RoboCup community and highlighting the usefulness of its manually annotated segmentation subsets. To further strengthen the contribution for the camera-ready version, the authors could include quantitative baseline experiments to demonstrate the dataset's practical utility for segmentation tasks and add academic references to better position the work within the literature.
+
