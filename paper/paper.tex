@@ -129,7 +129,7 @@ Images from the top camera are provided at a resolution of 640×480 pixels and m
 Images from the bottom camera are mostly 640×480 pixels, with a small subset at 320×240 pixels.
 All images are stored in PNG or JPEG format and use RGB or YCrCb color spaces.
 
-In addition to the technical metadata, each game was manually categorized by environmental factors affecting robot soccer vision.
+In addition to the technical metadata, each game is manually categorized by environmental factors affecting robot soccer vision.
 These condition labels make it possible to select images for specific situations and to evaluate models on challenging subsets.
 We distinguish the following categories:
 
@@ -165,14 +165,14 @@ We distinguish the following categories:
 \end{itemize}
 
 \Cref{fig:dataDistribution} compares the full dataset and labeled subset of 601 images across these four condition groups.
-Because pixel-wise annotation is costly, the labeled subset was sampled to reflect the broader condition distribution, making it suitable for representative supervised experiments and condition-specific evaluations.
+Because pixel-wise annotation is costly, the labeled subset is sampled to reflect the broader condition distribution, making it suitable for representative supervised experiments and condition-specific evaluations.
 \Cref{fig:examplesDataset} shows several example images from the dataset.
 
 \subsection{Image Segmentation Masks}\label{subsec:annotations}
 
 The dataset includes segmentation masks for 601 manually labeled images (see \Cref{fig:examplesSegmentation}) covering six semantic classes: \textit{field}, \textit{lines}, \textit{ball}, \textit{robots}, \textit{goal}, and \textit{others} (e.g., background or humans), plus an \textit{uncertain} label.
 Pixels assigned to the uncertain class include boundary regions between other classes, as well as areas that humans cannot clearly distinguish.
-Annotation was performed in \gls{cvat} with assistance from \gls{sam}.
+The images are annotated in \gls{cvat} with assistance from \gls{sam}.
 
 \begin{figure}
 	\centering
