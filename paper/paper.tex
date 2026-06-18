@@ -7,7 +7,6 @@
 \usepackage{cleveref}
 \usepackage[acronym]{glossaries}
 \usepackage{tikz}
-% \usepackage{pgfplotstable}
 \usepackage{xcolor}
 
 \setlength{\textfloatsep}{8pt plus 1pt minus 2pt}
@@ -23,8 +22,6 @@
 \newacronym{cvat}{CVAT}{Computer Vision Annotation Tool}
 \newacronym{sam}{SAM}{Segment Anything Model}
 \glsdisablehyper
-
-% \pgfplotsset{compat=1.18}
 
 \definecolor{ballOrange}{RGB}{199, 92, 10}
 \definecolor{fieldRed}{RGB}{245, 41, 5}
@@ -80,12 +77,6 @@ Of these images, 601 are manually annotated with segmentation masks as described
 Approximately 44\% of the images originate from our own team, \textit{HULKs}; the remainder comes from \textit{B-Human}, \textit{SPQR}, \textit{Nao Devils}, \textit{BerlinUnited}, and \textit{Dutch Nao Team}.
 For each game, metadata records the image format and manually assigned environmental conditions.
 
-% B-Human: 984,822
-% SPQR: 33465
-% NaoDevils: 10184
-% BerlinUnited: 8571
-% DutchNaoTeam: 298
-
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -133,30 +124,6 @@ In addition to the technical metadata, each game is manually categorized by envi
 These condition labels make it possible to select images for specific situations and to evaluate models on challenging subsets.
 We distinguish the following categories:
 
-% Total Images: 1864394
-
-% Top: 958228
-% Bottom: 906166
-
-% Field Conditions Distribution (weighted by image count):
-% Inconsistent Field Color: 303294
-% Consistent Field Color: 1561100
-
-% Light Conditions Distribution:
-% Outdoor: 293021
-% Indoor: 1290056
-% Mixed: 281317
-
-% Shadows/Light Reflections Distribution:
-% Neither: 1458002
-% Light Reflections: 28696
-% Shadows: 325836
-% Both: 51860
-
-% Line Conditions Distribution:
-% Taped: 826890
-% Spray-painted (fair): 1013097
-% Spray-painted (poor): 24407
 \begin{itemize}
 	\item \textbf{Light Source and Intensity}: Sun (medium), Sun (bright), Artificial (dark), Artificial (medium), Mixed (one side bright, one side dark)
 	\item \textbf{Shadows and Light Reflections}: None, Reflections, Shadows, Both
@@ -216,28 +183,6 @@ The images are annotated in \gls{cvat} with assistance from \gls{sam}.
 	\begin{subfigure}[b]{0.16\textwidth}
 		\includegraphics[height=1.45cm]{figures/00326_RGB.png}
 	\end{subfigure}
-
-	% \vspace{0.3em}
-	%
-	% \begin{subfigure}[b]{0.16\textwidth}
-	% 	\includegraphics[height=1.45cm]{figures/00330_RGB.png}
-	% \end{subfigure}
-	% \begin{subfigure}[b]{0.16\textwidth}
-	% 	\includegraphics[height=1.45cm]{figures/00341_RGB.png}
-	% \end{subfigure}
-	% \begin{subfigure}[b]{0.16\textwidth}
-	% 	\includegraphics[height=1.45cm]{figures/00347_RGB.png}
-	% \end{subfigure}
-	% \begin{subfigure}[b]{0.16\textwidth}
-	% 	\includegraphics[height=1.45cm]{figures/00351_RGB.png}
-	% \end{subfigure}
-	% \begin{subfigure}[b]{0.16\textwidth}
-	% 	\includegraphics[height=1.45cm]{figures/00558_RGB.png}
-	% \end{subfigure}
-	% \begin{subfigure}[b]{0.16\textwidth}
-	% 	\includegraphics[height=1.45cm]{figures/00593_RGB.png}
-	% \end{subfigure}
-
 	\caption{Example images of the dataset.}\label{fig:examplesDataset}
 \end{figure}
 
